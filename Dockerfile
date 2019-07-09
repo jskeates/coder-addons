@@ -19,6 +19,7 @@ RUN curl -Lo /tmp/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-li
 RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.12.7.linux-amd64.tar.gz \
  && tar -C /usr/local -xzf /tmp/go.tar.gz \
  && rm /tmp/go.tar.gz
+ENV PATH=$PATH:/usr/local/go/bin
 
 # docker (CLI only)
 RUN curl -Lo /tmp/docker.tar.gz https://download.docker.com/linux/static/stable/x86_64/docker-18.09.7.tgz \
