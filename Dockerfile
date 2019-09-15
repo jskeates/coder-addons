@@ -1,4 +1,4 @@
-FROM codercom/code-server:1.1156-vsc1.33.1
+FROM codercom/code-server:2.1472-vsc1.38.1
 
 USER root
 
