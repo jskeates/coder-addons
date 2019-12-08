@@ -1,4 +1,4 @@
-FROM codercom/code-server:2.1472-vsc1.38.1
+FROM codercom/code-server:2.1694-vsc1.39.2
 
 USER root
 
@@ -16,7 +16,7 @@ RUN curl -Lo /tmp/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-li
  && rm /tmp/ngrok.zip
 
 # go
-RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.12.7.linux-amd64.tar.gz \
+RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz \
  && tar -C /usr/local -xzf /tmp/go.tar.gz \
  && rm /tmp/go.tar.gz
 ENV PATH=$PATH:/usr/local/go/bin
@@ -29,15 +29,15 @@ RUN curl -Lo /tmp/docker.tar.gz https://download.docker.com/linux/static/stable/
  && rm -rf /tmp/docker /tmp/docker.tar.gz
 
 # docker-compose
-RUN curl -Lo /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/1.24.0/docker-compose-Linux-x86_64
+RUN curl -Lo /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/1.25.0/docker-compose-Linux-x86_64
 
 # kubectl
-RUN curl -Lo /tmp/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.13.7/bin/linux/amd64/kubectl \
+RUN curl -Lo /tmp/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.15.5/bin/linux/amd64/kubectl \
  && chmod +x /tmp/kubectl \
  && mv /tmp/kubectl /usr/local/bin/kubectl
 
 # kubeadm
-RUN curl -Lo /tmp/kubeadm https://storage.googleapis.com/kubernetes-release/release/v1.13.7/bin/linux/amd64/kubeadm \
+RUN curl -Lo /tmp/kubeadm https://storage.googleapis.com/kubernetes-release/release/v1.15.5/bin/linux/amd64/kubeadm \
  && chmod +x /tmp/kubeadm \
  && mv /tmp/kubeadm /usr/local/bin/kubeadm
 
