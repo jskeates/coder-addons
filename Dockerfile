@@ -3,10 +3,14 @@ FROM codercom/code-server:3.4.1
 USER root
 
 # apt packages
-RUN apt-get update \
- && apt-get install -y unzip zsh \
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \ 
+ && apt-get update \
+ && apt-get install -y unzip zsh nodejs \
  && apt-get upgrade -y \
  && rm -rf /var/lib/apt/lists/*
+
+# serverless
+RUN npm install -g serverless
 
 # ngrok
 RUN curl -Lo /tmp/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip \
@@ -54,5 +58,6 @@ RUN curl -Lo /tmp/helm.tar.gz https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz
  && tar -xzf helm.tar.gz \
  && mv /tmp/linux-amd64/helm /usr/local/bin/helm3 \
  && rm -rf /tmp/linux-amd64 /tmp/helm.tar.gz
+
 
 USER coder
