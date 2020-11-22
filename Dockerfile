@@ -60,8 +60,12 @@ RUN curl -Lo /tmp/helm.tar.gz https://get.helm.sh/helm-v3.4.1-linux-amd64.tar.gz
  && rm -rf /tmp/linux-amd64 /tmp/helm.tar.gz
 
 # skaffold
-RUN curl -Lo /tmp/skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 \
- && install /tmp/skaffold /usr/local/bin/
+RUN curl -Lo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/releases/v1.16.0/skaffold-linux-amd64 \
+ && chmod a+x /usr/local/bin/skaffold
+
+# img
+RUN curl -fSL "https://github.com/genuinetools/img/releases/download/v0.5.11/img-linux-amd64" -o "/usr/local/bin/img" \
+ && chmod a+x "/usr/local/bin/img"
 
 
 USER coder
