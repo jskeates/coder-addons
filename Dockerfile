@@ -59,5 +59,9 @@ RUN curl -Lo /tmp/helm.tar.gz https://get.helm.sh/helm-v3.4.1-linux-amd64.tar.gz
  && mv /tmp/linux-amd64/helm /usr/local/bin/helm3 \
  && rm -rf /tmp/linux-amd64 /tmp/helm.tar.gz
 
+# skaffold
+RUN curl -Lo /tmp/skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 \
+ && install /tmp/skaffold /usr/local/bin/
+
 
 USER coder
