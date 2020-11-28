@@ -67,5 +67,12 @@ RUN curl -Lo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/rel
 RUN curl -fSL "https://github.com/genuinetools/img/releases/download/v0.5.11/img-linux-amd64" -o "/usr/local/bin/img" \
  && chmod a+x "/usr/local/bin/img"
 
+# ctr (containerd CLI)
+RUN curl -Lo /tmp/ctr.tar.gz https://github.com/containerd/containerd/releases/download/v1.3.7/containerd-1.3.7-linux-amd64.tar.gz \
+ && cd /tmp \
+ && tar -xzf ctr.tar.gz \
+ && mv /tmp/bin/ctr /usr/local/bin/ctr \
+ && rm -rf /tmp/bin /tmp/ctr.tar.gz 
+
 
 USER coder
