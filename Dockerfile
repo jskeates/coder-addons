@@ -1,4 +1,4 @@
-FROM codercom/code-server:3.7.2
+FROM codercom/code-server:3.7.4
 
 USER root
 
@@ -20,7 +20,7 @@ RUN curl -Lo /tmp/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-li
  && rm /tmp/ngrok.zip
 
 # go
-RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.15.5.linux-amd64.tar.gz \
+RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.15.6.linux-amd64.tar.gz \
  && tar -C /usr/local -xzf /tmp/go.tar.gz \
  && rm /tmp/go.tar.gz
 ENV PATH=$PATH:/usr/local/go/bin
@@ -60,8 +60,15 @@ RUN curl -Lo /tmp/helm.tar.gz https://get.helm.sh/helm-v3.4.1-linux-amd64.tar.gz
  && rm -rf /tmp/linux-amd64 /tmp/helm.tar.gz
 
 # skaffold
-RUN curl -Lo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/releases/v1.16.0/skaffold-linux-amd64 \
+RUN curl -Lo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/releases/v1.17.0/skaffold-linux-amd64 \
  && chmod a+x /usr/local/bin/skaffold
+
+# kustomize
+RUN curl -Lo /tmp/kustomize.tar.gz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.7/kustomize_v3.8.7_linux_amd64.tar.gz \
+ && cd /tmp \
+ && tar -xzf kustomize.tar.gz \
+ && mv /tmp/kustomize /usr/local/bin/kustomize \
+ && rm -rf /tmp/kustomize.tar.gz 
 
 # img
 RUN curl -fSL "https://github.com/genuinetools/img/releases/download/v0.5.11/img-linux-amd64" -o "/usr/local/bin/img" \
