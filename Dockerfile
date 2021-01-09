@@ -81,4 +81,7 @@ RUN curl -Lo /tmp/ctr.tar.gz https://github.com/containerd/containerd/releases/d
  && mv /tmp/bin/ctr /usr/local/bin/ctr \
  && rm -rf /tmp/bin /tmp/ctr.tar.gz 
 
+# rust
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain 1.49 -c rls
+
 USER coder
