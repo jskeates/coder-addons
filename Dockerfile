@@ -1,4 +1,4 @@
-FROM codercom/code-server:3.7.4
+FROM codercom/code-server:3.8.0
 
 USER root
 
@@ -80,6 +80,5 @@ RUN curl -Lo /tmp/ctr.tar.gz https://github.com/containerd/containerd/releases/d
  && tar -xzf ctr.tar.gz \
  && mv /tmp/bin/ctr /usr/local/bin/ctr \
  && rm -rf /tmp/bin /tmp/ctr.tar.gz 
-
 
 USER coder
