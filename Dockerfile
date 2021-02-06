@@ -1,4 +1,4 @@
-FROM codercom/code-server:3.8.0
+FROM codercom/code-server:3.8.1
 
 USER root
 
@@ -20,7 +20,7 @@ RUN curl -Lo /tmp/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-li
  && rm /tmp/ngrok.zip
 
 # go
-RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.15.6.linux-amd64.tar.gz \
+RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.16rc1.linux-amd64.tar.gz \
  && tar -C /usr/local -xzf /tmp/go.tar.gz \
  && rm /tmp/go.tar.gz
 ENV PATH=$PATH:/usr/local/go/bin
@@ -36,12 +36,12 @@ RUN curl -Lo /tmp/docker.tar.gz https://download.docker.com/linux/static/stable/
 RUN curl -Lo /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/1.27.4/docker-compose-Linux-x86_64
 
 # kubectl
-RUN curl -Lo /tmp/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.19.4/bin/linux/amd64/kubectl \
+RUN curl -Lo /tmp/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.19.5/bin/linux/amd64/kubectl \
  && chmod +x /tmp/kubectl \
  && mv /tmp/kubectl /usr/local/bin/kubectl
 
 # kubeadm
-RUN curl -Lo /tmp/kubeadm https://storage.googleapis.com/kubernetes-release/release/v1.19.4/bin/linux/amd64/kubeadm \
+RUN curl -Lo /tmp/kubeadm https://storage.googleapis.com/kubernetes-release/release/v1.19.5/bin/linux/amd64/kubeadm \
  && chmod +x /tmp/kubeadm \
  && mv /tmp/kubeadm /usr/local/bin/kubeadm
 
@@ -49,22 +49,22 @@ RUN curl -Lo /tmp/kubeadm https://storage.googleapis.com/kubernetes-release/rele
 RUN curl -Lo /tmp/helm.tar.gz https://get.helm.sh/helm-v2.17.0-linux-amd64.tar.gz \
  && cd /tmp \
  && tar -xzf helm.tar.gz \
- && mv /tmp/linux-amd64/helm /usr/local/bin/helm \
+ && mv /tmp/linux-amd64/helm /usr/local/bin/helm2 \
  && rm -rf /tmp/linux-amd64 /tmp/helm.tar.gz
 
 # helm3
-RUN curl -Lo /tmp/helm.tar.gz https://get.helm.sh/helm-v3.4.1-linux-amd64.tar.gz \
+RUN curl -Lo /tmp/helm.tar.gz https://get.helm.sh/helm-v3.5.2-linux-amd64.tar.gz \
  && cd /tmp \
  && tar -xzf helm.tar.gz \
- && mv /tmp/linux-amd64/helm /usr/local/bin/helm3 \
+ && mv /tmp/linux-amd64/helm /usr/local/bin/helm \
  && rm -rf /tmp/linux-amd64 /tmp/helm.tar.gz
 
 # skaffold
-RUN curl -Lo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/releases/v1.17.0/skaffold-linux-amd64 \
+RUN curl -Lo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/releases/v1.19.0/skaffold-linux-amd64 \
  && chmod a+x /usr/local/bin/skaffold
 
 # kustomize
-RUN curl -Lo /tmp/kustomize.tar.gz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.8.7/kustomize_v3.8.7_linux_amd64.tar.gz \
+RUN curl -Lo /tmp/kustomize.tar.gz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv3.9.2/kustomize_v3.9.2_linux_amd64.tar.gz \
  && cd /tmp \
  && tar -xzf kustomize.tar.gz \
  && mv /tmp/kustomize /usr/local/bin/kustomize \
