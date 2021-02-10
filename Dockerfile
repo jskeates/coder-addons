@@ -5,7 +5,7 @@ USER root
 # apt packages
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \ 
  && apt-get update \
- && apt-get install -y unzip zsh nodejs uidmap \
+ && apt-get install -y unzip zsh nodejs uidmap build-essential sqlite3 libsqlite3-dev \
  && apt-get upgrade -y \
  && rm -rf /var/lib/apt/lists/*
 
