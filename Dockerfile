@@ -5,7 +5,7 @@ USER root
 # apt packages
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \ 
  && apt-get update \
- && apt-get install -y unzip zsh nodejs uidmap build-essential sqlite3 libsqlite3-dev \
+ && apt-get install -y unzip zsh nodejs uidmap build-essential sqlite3 libsqlite3-dev vim \
  && apt-get upgrade -y \
  && rm -rf /var/lib/apt/lists/*
 
@@ -39,6 +39,7 @@ RUN curl -Lo /usr/local/bin/docker-compose https://github.com/docker/compose/rel
 RUN curl -Lo /tmp/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.19.5/bin/linux/amd64/kubectl \
  && chmod +x /tmp/kubectl \
  && mv /tmp/kubectl /usr/local/bin/kubectl
+ENV KUBE_EDITOR=vim
 
 # kubeadm
 RUN curl -Lo /tmp/kubeadm https://storage.googleapis.com/kubernetes-release/release/v1.19.5/bin/linux/amd64/kubeadm \
