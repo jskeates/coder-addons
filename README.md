@@ -1,6 +1,6 @@
-# Coder + Addons
+# VS Code in the browser + addons
 
-[Coder Server](https://github.com/cdr/code-server) plus some additional binaries to use for developing Cloud apps.
+[Code Server](https://github.com/cdr/code-server) plus some additional binaries to use for developing Cloud apps.
 
 # Included
 - ngrok, for tunneling from your Coder server out to the internet
