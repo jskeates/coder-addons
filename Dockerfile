@@ -33,7 +33,8 @@ RUN curl -Lo /tmp/docker.tar.gz https://download.docker.com/linux/static/stable/
  && rm -rf /tmp/docker /tmp/docker.tar.gz
 
 # docker-compose
-RUN curl -Lo /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+RUN curl -Lo /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64 \
+ && chmod +x /usr/local/bin/docker-compose
 
 # kubectl
 RUN curl -Lo /tmp/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.20.6/bin/linux/amd64/kubectl \
