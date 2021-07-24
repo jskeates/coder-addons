@@ -55,7 +55,7 @@ RUN curl -Lo /tmp/helm.tar.gz https://get.helm.sh/helm-v2.17.0-linux-amd64.tar.g
  && rm -rf /tmp/linux-amd64 /tmp/helm.tar.gz
 
 # helm3
-RUN curl -Lo /tmp/helm.tar.gz https://get.helm.sh/helm-v3.6.0-linux-amd64.tar.gz \
+RUN curl -Lo /tmp/helm.tar.gz https://get.helm.sh/helm-v3.6.3-linux-amd64.tar.gz \
  && cd /tmp \
  && tar -xzf helm.tar.gz \
  && mv /tmp/linux-amd64/helm /usr/local/bin/helm \
