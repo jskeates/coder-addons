@@ -20,7 +20,7 @@ RUN curl -Lo /tmp/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-li
  && rm /tmp/ngrok.zip
 
 # go
-RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.16.5.linux-amd64.tar.gz \
+RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.16.6.linux-amd64.tar.gz \
  && tar -C /usr/local -xzf /tmp/go.tar.gz \
  && rm /tmp/go.tar.gz
 ENV PATH=$PATH:/usr/local/go/bin
