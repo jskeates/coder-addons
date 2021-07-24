@@ -3,9 +3,15 @@ FROM codercom/code-server:3.11.0
 USER root
 
 # apt packages
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash - \ 
+RUN apt-get update \
+ && apt-get install -y apt-transport-https gnupg \
+ && curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null \
+ && echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ buster main" > /etc/apt/sources.list.d/azure-cli.list \
+ && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add - \
+ && echo "deb https://deb.nodesource.com/node_14.x buster main" >> /etc/apt/sources.list.d/nodesource.list \
+ && echo "deb-src https://deb.nodesource.com/node_14.x buster main" >> /etc/apt/sources.list.d/nodesource.list \
  && apt-get update \
- && apt-get install -y unzip zsh nodejs uidmap build-essential sqlite3 libsqlite3-dev vim \
+ && apt-get install -y unzip zsh nodejs uidmap build-essential sqlite3 libsqlite3-dev vim azure-cli \
  && apt-get upgrade -y \
  && rm -rf /var/lib/apt/lists/*
 
@@ -96,5 +102,12 @@ RUN curl -Lo /tmp/flux.tar.gz https://github.com/fluxcd/flux2/releases/download/
  # k3s
 RUN curl -fSL "https://github.com/k3s-io/k3s/releases/download/v1.20.6%2Bk3s1/k3s" -o "/usr/local/bin/k3s" \
  && chmod a+x "/usr/local/bin/k3s"
+
+# aws v2
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.22.zip" -o "/tmp/awscliv2.zip" \
+ && cd /tmp \
+ && unzip awscliv2.zip \
+ && ./aws/install \
+ && rm -rf /tmp/aws /tmp/awscliv2.zip
 
 USER coder
