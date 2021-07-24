@@ -94,7 +94,7 @@ RUN curl -Lo /tmp/flux.tar.gz https://github.com/fluxcd/flux2/releases/download/
  && rm -rf /tmp/flux /tmp/flux.tar.gz
  
  # k3s
- RUN curl -fSL "https://github.com/k3s-io/k3s/releases/download/v1.20.6%2Bk3s1/k3s" -o "/usr/local/bin/k3s" \
+RUN curl -fSL "https://github.com/k3s-io/k3s/releases/download/v1.20.6%2Bk3s1/k3s" -o "/usr/local/bin/k3s" \
  && chmod a+x "/usr/local/bin/k3s"
 
 USER coder
