@@ -26,7 +26,7 @@ RUN curl -Lo /tmp/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-li
  && rm /tmp/ngrok.zip
 
 # go
-RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.17.1.linux-amd64.tar.gz \
+RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.17.8.linux-amd64.tar.gz \
  && tar -C /usr/local -xzf /tmp/go.tar.gz \
  && rm /tmp/go.tar.gz
 ENV PATH=$PATH:/usr/local/go/bin
@@ -104,7 +104,7 @@ RUN curl -fSL "https://github.com/k3s-io/k3s/releases/download/v1.20.6%2Bk3s1/k3
  && chmod a+x "/usr/local/bin/k3s"
 
 # aws v2
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.2.37.zip" -o "/tmp/awscliv2.zip" \
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.4.25.zip" -o "/tmp/awscliv2.zip" \
  && cd /tmp \
  && unzip awscliv2.zip \
  && ./aws/install \
