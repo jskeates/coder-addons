@@ -8,8 +8,8 @@ RUN apt-get update \
  && curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null \
  && echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ buster main" > /etc/apt/sources.list.d/azure-cli.list \
  && curl -fsSL https://deb.nodesource.com/gpgkey/nodesource.gpg.key | sudo apt-key add - \
- && echo "deb https://deb.nodesource.com/node_14.x buster main" >> /etc/apt/sources.list.d/nodesource.list \
- && echo "deb-src https://deb.nodesource.com/node_14.x buster main" >> /etc/apt/sources.list.d/nodesource.list \
+ && echo "deb https://deb.nodesource.com/node_18.x buster main" >> /etc/apt/sources.list.d/nodesource.list \
+ && echo "deb-src https://deb.nodesource.com/node_18.x buster main" >> /etc/apt/sources.list.d/nodesource.list \
  && apt-get update \
  && apt-get install -y unzip zsh nodejs uidmap build-essential sqlite3 libsqlite3-dev vim azure-cli \
  && apt-get upgrade -y \
