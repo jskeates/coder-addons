@@ -104,7 +104,7 @@ RUN curl -fSL "https://github.com/k3s-io/k3s/releases/download/v1.23.6%2Bk3s1/k3
  && chmod a+x "/usr/local/bin/k3s"
 
 # aws v2
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.4.25.zip" -o "/tmp/awscliv2.zip" \
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.6.1.zip" -o "/tmp/awscliv2.zip" \
  && cd /tmp \
  && unzip awscliv2.zip \
  && ./aws/install \
