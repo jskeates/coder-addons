@@ -53,15 +53,15 @@ RUN curl -Lo /tmp/kubeadm https://storage.googleapis.com/kubernetes-release/rele
  && chmod +x /tmp/kubeadm \
  && mv /tmp/kubeadm /usr/local/bin/kubeadm
 
-# helm
+# helm2
 RUN curl -Lo /tmp/helm.tar.gz https://get.helm.sh/helm-v2.17.0-linux-amd64.tar.gz \
  && cd /tmp \
  && tar -xzf helm.tar.gz \
  && mv /tmp/linux-amd64/helm /usr/local/bin/helm2 \
  && rm -rf /tmp/linux-amd64 /tmp/helm.tar.gz
 
-# helm3
-RUN curl -Lo /tmp/helm.tar.gz https://get.helm.sh/helm-v3.6.3-linux-amd64.tar.gz \
+# helm
+RUN curl -Lo /tmp/helm.tar.gz https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz \
  && cd /tmp \
  && tar -xzf helm.tar.gz \
  && mv /tmp/linux-amd64/helm /usr/local/bin/helm \
