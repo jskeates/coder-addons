@@ -92,8 +92,15 @@ RUN curl -Lo /tmp/ctr.tar.gz https://github.com/containerd/containerd/releases/d
 # rust
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain 1.52 -c rls -y
 
-# fluxcd2
+# fluxcd2 0.14.2
 RUN curl -Lo /tmp/flux.tar.gz https://github.com/fluxcd/flux2/releases/download/v0.14.2/flux_0.14.2_linux_amd64.tar.gz \
+ && cd /tmp \
+ && tar -xzf flux.tar.gz \
+ && mv /tmp/flux /usr/local/bin/flux14 \
+ && rm -rf /tmp/flux /tmp/flux.tar.gz
+
+# fluxcd2 0.29.5
+RUN curl -Lo /tmp/flux.tar.gz https://github.com/fluxcd/flux2/releases/download/v0.29.5/flux_0.29.5_linux_amd64.tar.gz \
  && cd /tmp \
  && tar -xzf flux.tar.gz \
  && mv /tmp/flux /usr/local/bin/flux \
