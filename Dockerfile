@@ -72,7 +72,7 @@ RUN curl -Lo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/rel
  && chmod a+x /usr/local/bin/skaffold
 
 # kustomize
-RUN curl -Lo /tmp/kustomize.tar.gz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.1.3/kustomize_v4.1.3_linux_amd64.tar.gz \
+RUN curl -Lo /tmp/kustomize.tar.gz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.5.4/kustomize_v4.5.4_linux_amd64.tar.gz \
  && cd /tmp \
  && tar -xzf kustomize.tar.gz \
  && mv /tmp/kustomize /usr/local/bin/kustomize \
