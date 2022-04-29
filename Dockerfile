@@ -43,13 +43,13 @@ RUN curl -Lo /usr/local/bin/docker-compose https://github.com/docker/compose/rel
  && chmod +x /usr/local/bin/docker-compose
 
 # kubectl
-RUN curl -Lo /tmp/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.20.6/bin/linux/amd64/kubectl \
+RUN curl -Lo /tmp/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.23.6/bin/linux/amd64/kubectl \
  && chmod +x /tmp/kubectl \
  && mv /tmp/kubectl /usr/local/bin/kubectl
 ENV KUBE_EDITOR=vim
 
 # kubeadm
-RUN curl -Lo /tmp/kubeadm https://storage.googleapis.com/kubernetes-release/release/v1.20.6/bin/linux/amd64/kubeadm \
+RUN curl -Lo /tmp/kubeadm https://storage.googleapis.com/kubernetes-release/release/v1.23.6/bin/linux/amd64/kubeadm \
  && chmod +x /tmp/kubeadm \
  && mv /tmp/kubeadm /usr/local/bin/kubeadm
 
@@ -100,7 +100,7 @@ RUN curl -Lo /tmp/flux.tar.gz https://github.com/fluxcd/flux2/releases/download/
  && rm -rf /tmp/flux /tmp/flux.tar.gz
  
  # k3s
-RUN curl -fSL "https://github.com/k3s-io/k3s/releases/download/v1.20.6%2Bk3s1/k3s" -o "/usr/local/bin/k3s" \
+RUN curl -fSL "https://github.com/k3s-io/k3s/releases/download/v1.23.6%2Bk3s1/k3s" -o "/usr/local/bin/k3s" \
  && chmod a+x "/usr/local/bin/k3s"
 
 # aws v2
