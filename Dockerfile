@@ -68,7 +68,7 @@ RUN curl -Lo /tmp/helm.tar.gz https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz
  && rm -rf /tmp/linux-amd64 /tmp/helm.tar.gz
 
 # skaffold
-RUN curl -Lo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/releases/v1.38.0/skaffold-linux-amd64 \
+RUN curl -Lo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/releases/v1.39.1/skaffold-linux-amd64 \
  && chmod a+x /usr/local/bin/skaffold
 
 # kustomize
