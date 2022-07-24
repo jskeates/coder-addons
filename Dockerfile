@@ -112,10 +112,18 @@ RUN curl -fSL "https://github.com/k3s-io/k3s/releases/download/v1.23.6%2Bk3s1/k3
 
 # aws v2
 # release list: https://github.com/aws/aws-cli/tags
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.18.zip" -o "/tmp/awscliv2.zip" \
+RUN curl -L "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.18.zip" -o "/tmp/awscliv2.zip" \
  && cd /tmp \
  && unzip awscliv2.zip \
  && ./aws/install \
  && rm -rf /tmp/aws /tmp/awscliv2.zip
+
+# terraform
+# release list: https://github.com/hashicorp/terraform/releases
+RUN curl -L "https://releases.hashicorp.com/terraform/1.2.5/terraform_1.2.5_linux_amd64.zip" -o "/tmp/terraform.zip" \
+ && cd /tmp \
+ && unzip terraform.zip \
+ && mv /tmp/terraform /usr/local/bin/terraform \
+ && rm -rf /tmp/terraform.zip
 
 USER coder
