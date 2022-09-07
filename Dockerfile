@@ -126,4 +126,12 @@ RUN curl -L "https://releases.hashicorp.com/terraform/1.2.5/terraform_1.2.5_linu
  && mv /tmp/terraform /usr/local/bin/terraform \
  && rm -rf /tmp/terraform.zip
 
+# nats - NATS CLI
+# release list: https://github.com/nats-io/natscli/releases
+RUN curl -L "https://github.com/nats-io/natscli/releases/download/v0.0.33/nats-0.0.33-linux-amd64.zip" -o "/tmp/nats.zip" \
+ && cd /tmp \
+ && unzip nats.zip \
+ && mv /tmp/nats/nats /usr/local/bin/nats \
+ && rm -rf /tmp/nats /tmp/nats.zip
+
 USER coder
