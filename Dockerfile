@@ -1,4 +1,4 @@
-FROM codercom/code-server:4.5.1
+FROM codercom/code-server:4.6.1
 
 USER root
 
@@ -26,7 +26,7 @@ RUN curl -Lo /tmp/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-li
  && rm /tmp/ngrok.zip
 
 # go
-RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.18.4.linux-amd64.tar.gz \
+RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.19.1.linux-amd64.tar.gz \
  && tar -C /usr/local -xzf /tmp/go.tar.gz \
  && rm /tmp/go.tar.gz
 ENV PATH=$PATH:/usr/local/go/bin
@@ -112,7 +112,7 @@ RUN curl -fSL "https://github.com/k3s-io/k3s/releases/download/v1.23.6%2Bk3s1/k3
 
 # aws v2
 # release list: https://github.com/aws/aws-cli/tags
-RUN curl -L "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.18.zip" -o "/tmp/awscliv2.zip" \
+RUN curl -L "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.29.zip" -o "/tmp/awscliv2.zip" \
  && cd /tmp \
  && unzip awscliv2.zip \
  && ./aws/install \
@@ -125,5 +125,13 @@ RUN curl -L "https://releases.hashicorp.com/terraform/1.2.5/terraform_1.2.5_linu
  && unzip terraform.zip \
  && mv /tmp/terraform /usr/local/bin/terraform \
  && rm -rf /tmp/terraform.zip
+
+# nats - NATS CLI
+# release list: https://github.com/nats-io/natscli/releases
+RUN curl -L "https://github.com/nats-io/natscli/releases/download/v0.0.33/nats-0.0.33-linux-amd64.zip" -o "/tmp/nats.zip" \
+ && cd /tmp \
+ && unzip nats.zip \
+ && mv /tmp/nats/nats /usr/local/bin/nats \
+ && rm -rf /tmp/nats /tmp/nats.zip
 
 USER coder
