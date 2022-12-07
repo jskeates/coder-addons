@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ ! -f "/usr/bin/unzip" ]
+then
+    echo "unzip is not installed. Installing now... (if prompted, enter password for sudo)"
+    sudo apt-get update
+    sudo apt-get install -y unzip
+    exec /usr/bin/unzip $@
+else
+    exec /usr/bin/unzip $@
+fi

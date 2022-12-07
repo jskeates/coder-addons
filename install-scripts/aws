@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ ! -f "/usr/local/bin/aws" ]
+then
+    echo "aws is not installed. Installing now... (if prompted, enter password for sudo)"
+    curl -L "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.7.29.zip" -o "/tmp/aws.zip"
+    pushd /tmp
+    unzip aws.zip
+    sudo ./aws/install
+    rm -rf /tmp/aws /tmp/aws.zip
+    popd
+    exec /usr/local/bin/aws $@
+else
+    exec /usr/local/bin/aws $@
+fi

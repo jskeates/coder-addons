@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ ! -f "/usr/local/bin/img" ]
+then
+    echo "img is not installed. Installing now... (if prompted, enter password for sudo)"
+    sudo curl -Lo /usr/local/bin/img https://github.com/genuinetools/img/releases/download/v0.5.11/img-linux-amd64
+    sudo chmod a+x "/usr/local/bin/img"
+    exec /usr/local/bin/img $@
+else
+    exec /usr/local/bin/img $@
+fi

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ ! -f "$HOME/.nvm/versions/node/v18.12.1/bin/serverless" ]
+then
+    echo "serverless is not installed. Installing now with npm... (if prompted, enter password for sudo)"
+    npm install -g serverless
+    exec $HOME/.nvm/versions/node/v18.12.1/bin/serverless $@
+else
+    exec $HOME/.nvm/versions/node/v18.12.1/bin/serverless $@
+fi

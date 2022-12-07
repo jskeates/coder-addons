@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if [ ! -f "$HOME/.cargo/bin/rustc" ]
+then
+    echo "rustc is not installed. Installing now... (if prompted, enter password for sudo)"
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain 1.52 -c rls -y
+    exec $HOME/.cargo/bin/rustc $@
+else
+    exec $HOME/.cargo/bin/rustc $@
+fi

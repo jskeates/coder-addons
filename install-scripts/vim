@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ ! -f "/usr/bin/vim" ]
+then
+    echo "vim is not installed. Installing now... (if prompted, enter password for sudo)"
+    sudo apt-get update
+    sudo apt-get install -y vim
+    exec /usr/bin/vim $@
+else
+    exec /usr/bin/vim $@
+fi

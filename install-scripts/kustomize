@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ ! -f "/usr/local/bin/kustomize" ]
+then
+    echo "kustomize is not installed. Installing now... (if prompted, enter password for sudo)"
+    curl -Lo /tmp/kustomize.tar.gz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.5.4/kustomize_v4.5.4_linux_amd64.tar.gz
+    pushd /tmp
+    tar -xzf /tmp/kustomize.tar.gz
+    sudo mv /tmp/kustomize /usr/local/bin/kustomize
+    rm -rf /tmp/kustomize.tar.gz
+    popd
+    exec /usr/local/bin/kustomize $@
+else
+    exec /usr/local/bin/kustomize $@
+fi

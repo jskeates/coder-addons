@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ ! -f "/usr/local/bin/nats" ]
+then
+    echo "nats is not installed. Installing now... (if prompted, enter password for sudo)"
+    curl -L "https://github.com/nats-io/natscli/releases/download/v0.0.33/nats-0.0.33-linux-amd64.zip" -o "/tmp/nats.zip" -o "/tmp/nats.zip"
+    pushd /tmp
+    unzip nats.zip
+    sudo mv /tmp/nats-0.0.33-linux-amd64/nats /usr/local/bin/nats
+    rm -rf /tmp/nats-0.0.33-linux-amd64 /tmp/nats.zip
+    popd
+    exec /usr/local/bin/nats $@
+else
+    exec /usr/local/bin/nats $@
+fi

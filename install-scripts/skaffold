@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ ! -f "/usr/local/bin/skaffold" ]
+then
+    echo "skaffold is not installed. Installing now... (if prompted, enter password for sudo)"
+    sudo curl -Lo /usr/local/bin/skaffold https://storage.googleapis.com/skaffold/releases/v1.39.1/skaffold-linux-amd64
+    sudo chmod +x /usr/local/bin/skaffold
+    exec /usr/local/bin/skaffold $@
+else
+    exec /usr/local/bin/skaffold $@
+fi
