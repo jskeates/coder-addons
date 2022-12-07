@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ -z "${NVM_DIR}" ]
+then
+    echo "nvm is not installed. Installing now... (if prompted, enter password for sudo)"
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+    source $HOME/.bashrc
+    #We'll also manually load nvm for good measure
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    nvm $@
+else
+    #Seems like the bashrc is broken, let's try manually loading
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    nvm $@
+fi

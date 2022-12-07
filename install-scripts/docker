@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ ! -f "/usr/local/bin/docker" ]
+then
+    echo "docker is not installed. Installing now... (if prompted, enter password for sudo)"
+    curl -Lo /tmp/docker.tar.gz https://download.docker.com/linux/static/stable/x86_64/docker-20.10.2.tgz
+    pushd /tmp
+    tar -xzf /tmp/docker.tar.gz
+    sudo mv /tmp/docker/docker /usr/local/bin/docker
+    rm -rf /tmp/docker /tmp/docker.tar.gz
+    popd
+    exec /usr/local/bin/docker $@
+else
+    exec /usr/local/bin/docker $@
+fi

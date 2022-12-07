@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ ! -f "/usr/bin/gcloud" ]
+then
+    echo "gcloud is not installed. Installing now... (if prompted, enter password for sudo)"
+    sudo apt-get update
+    sudo apt-get install -y ca-certificates curl apt-transport-https gnupg
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/cloud.google.gpg
+    sudo apt-get update
+    sudo apt-get install -y google-cloud-cli
+    exec /usr/bin/gcloud $@
+else
+    exec /usr/bin/gcloud $@
+fi

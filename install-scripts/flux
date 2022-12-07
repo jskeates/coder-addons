@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ ! -f "/usr/local/bin/flux" ]
+then
+    echo "flux is not installed. Installing now... (if prompted, enter password for sudo)"
+    curl -Lo /tmp/flux.tar.gz https://github.com/fluxcd/flux2/releases/download/v0.29.5/flux_0.29.5_linux_amd64.tar.gz
+    pushd /tmp
+    tar -xzf /tmp/flux.tar.gz
+    sudo mv /tmp/flux /usr/local/bin/flux
+    rm -rf /tmp/flux /tmp/flux.tar.gz
+    popd
+    exec /usr/local/bin/flux $@
+else
+    exec /usr/local/bin/flux $@
+fi

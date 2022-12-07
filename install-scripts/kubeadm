@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ ! -f "/usr/local/bin/kubeadm" ]
+then
+    echo "kubeadm is not installed. Installing now... (if prompted, enter password for sudo)"
+    sudo curl -Lo /usr/local/bin/kubeadm https://storage.googleapis.com/kubernetes-release/release/v1.23.6/bin/linux/amd64/kubeadm
+    sudo chmod +x /usr/local/bin/kubeadm
+    exec /usr/local/bin/kubeadm $@
+else
+    exec /usr/local/bin/kubeadm $@
+fi

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ ! -f "/usr/local/bin/ngrok" ]
+then
+    echo "ngrok is not installed. Installing now... (if prompted, enter password for sudo)"
+    curl -Lo /tmp/ngrok.zip https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+    pushd /tmp
+    unzip /tmp/ngrok.zip
+    sudo mv ngrok /usr/local/bin/ngrok
+    rm /tmp/ngrok.zip
+    popd
+    exec /usr/local/bin/ngrok $@
+else
+    exec /usr/local/bin/ngrok $@
+fi

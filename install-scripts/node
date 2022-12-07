@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ ! -f "$HOME/.nvm/versions/node/v18.12.1/bin/node" ]
+then
+    echo "node is not installed. Installing now with nvm... (if prompted, enter password for sudo)"
+    nvm install v18.12.1 --latest-npm
+    nvm use v18.12.1
+    exec $HOME/.nvm/versions/node/v18.12.1/bin/node $@
+else
+    exec $HOME/.nvm/versions/node/v18.12.1/bin/node $@
+fi

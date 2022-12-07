@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if [ ! -f "/usr/local/bin/helm" ]
+then
+    echo "helm is not installed. Installing now... (if prompted, enter password for sudo)"
+    curl -Lo /tmp/helm.tar.gz https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz
+    pushd /tmp
+    tar -xzf /tmp/helm.tar.gz
+    sudo mv /tmp/linux-amd64/helm /usr/local/bin/helm
+    rm -rf /tmp/linux-amd64 /tmp/helm.tar.gz
+    popd
+    exec /usr/local/bin/helm $@
+else
+    exec /usr/local/bin/helm $@
+fi

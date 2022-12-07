@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ ! -f "/usr/bin/sqlite3" ]
+then
+    echo "sqlite3 is not installed. Installing now... (if prompted, enter password for sudo)"
+    sudo apt-get update
+    sudo apt-get install -y sqlite3 libsqlite3-dev
+    exec /usr/bin/sqlite3 $@
+else
+    exec /usr/bin/sqlite3 $@
+fi

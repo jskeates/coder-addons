@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ ! -f "/usr/local/bin/docker-compose" ]
+then
+    echo "docker-compose is not installed. Installing now... (if prompted, enter password for sudo)"
+    sudo curl -Lo /usr/local/bin/docker-compose https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+    sudo chmod +x /usr/local/bin/docker-compose
+    exec /usr/local/bin/docker-compose $@
+else
+    exec /usr/local/bin/docker-compose $@
+fi
