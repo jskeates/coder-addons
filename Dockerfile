@@ -1,4 +1,4 @@
-FROM codercom/code-server:4.9.0-focal
+FROM codercom/code-server:4.9.1-focal
 
 USER root
 
