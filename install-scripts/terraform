@@ -5,7 +5,7 @@
 if [ ! -f "/usr/local/bin/terraform" ]
 then
     echo "terraform is not installed. Installing now... (if prompted, enter password for sudo)"
-    curl -L "https://releases.hashicorp.com/terraform/1.2.5/terraform_1.2.5_linux_amd64.zip" -o "/tmp/terraform.zip"
+    curl -L "https://releases.hashicorp.com/terraform/1.4.6/terraform_1.4.6_linux_amd64.zip" -o "/tmp/terraform.zip"
     pushd /tmp
     unzip terraform.zip
     sudo mv /tmp/terraform /usr/local/bin/terraform
