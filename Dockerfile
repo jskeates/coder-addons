@@ -1,4 +1,4 @@
-FROM codercom/code-server:4.9.1-bullseye
+FROM codercom/code-server:4.12.0-bullseye
 
 USER root
 
