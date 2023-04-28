@@ -1,4 +1,4 @@
-FROM codercom/code-server:4.9.1-bullseye
+FROM codercom/code-server:4.12.0-bullseye
 
 USER root
 
@@ -9,7 +9,7 @@ RUN apt-get update \
  && rm -rf /var/lib/apt/lists/*
 
 # go
-RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.19.4.linux-amd64.tar.gz \
+RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.20.3.linux-amd64.tar.gz \
  && tar -C /usr/local -xzf /tmp/go.tar.gz \
  && rm /tmp/go.tar.gz
 ENV PATH=$PATH:/usr/local/go/bin
