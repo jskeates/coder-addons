@@ -4,9 +4,10 @@ name: Publish release
 
 # Controls when the workflow will run
 on:
-  release:
-    types: [published]
-  push: {}
+  push:
+    tags:
+    - "v*"
+  pull_request: {}
 
 env:
   REGISTRY: ghcr.io
@@ -35,7 +36,11 @@ jobs:
         uses: docker/metadata-action@v4.6.0
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: type=semver,pattern={{raw}}
+          tags: |
+            # tag event
+            type=ref,enable=true,priority=600,prefix=,suffix=,event=tag
+            # pull request event
+            type=ref,enable=true,priority=600,prefix=pr-,suffix=,event=pr
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4.1.1
