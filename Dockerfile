@@ -15,7 +15,7 @@ RUN curl -Lo /tmp/go.tar.gz https://dl.google.com/go/go1.21.0.linux-amd64.tar.gz
 ENV PATH=$PATH:/usr/local/go/bin
 
 # kubectl
-RUN curl -Lo /tmp/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.23.6/bin/linux/amd64/kubectl \
+RUN curl -Lo /tmp/kubectl https://storage.googleapis.com/kubernetes-release/release/v1.27.4/bin/linux/amd64/kubectl \
  && chmod +x /tmp/kubectl \
  && mv /tmp/kubectl /usr/local/bin/kubectl
 ENV KUBE_EDITOR=vim
