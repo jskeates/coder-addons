@@ -1,0 +1,38 @@
+#!/bin/bash
+
+if [ ! -f "/home/coder/.deno/bin/deno" ]
+then
+    # taken from https://deno.land/x/install@v0.1.9/install.sh
+    deno_uri="https://github.com/denoland/deno/releases/download/v1.42.4/deno-x86_64-unknown-linux-gnu.zip"
+    deno_install="${DENO_INSTALL:-$HOME/.deno}"
+    bin_dir="$deno_install/bin"
+    exe="$bin_dir/deno"
+
+    if [ ! -d "$bin_dir" ]; then
+        mkdir -p "$bin_dir"
+    fi
+
+    curl --fail --location --progress-bar --output "$exe.zip" "$deno_uri"
+    unzip -d "$bin_dir" -o "$exe.zip"
+    chmod +x "$exe"
+    rm "$exe.zip"
+
+    echo "Deno was installed successfully to $exe"
+    if command -v deno >/dev/null; then
+        echo "Run 'deno --help' to get started"
+    else
+        case $SHELL in
+        /bin/zsh) shell_profile=".zshrc" ;;
+        *) shell_profile=".bashrc" ;;
+        esac
+        echo "Manually add the directory to your \$HOME/$shell_profile (or similar)"
+        echo "  export DENO_INSTALL=\"$deno_install\""
+        echo "  export PATH=\"\$DENO_INSTALL/bin:\$PATH\""
+        echo "Run '$exe --help' to get started"
+    fi
+
+    exec /home/coder/.deno/bin/deno $@
+else
+    echo "WARN: Deno may not be correctly on your path! Check bashrc"
+    exec /home/coder/.deno/bin/deno $@
+fi
