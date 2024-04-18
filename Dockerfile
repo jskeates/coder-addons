@@ -1,4 +1,4 @@
-FROM codercom/code-server:4.21.0-bookworm
+FROM codercom/code-server:4.23.1-bookworm
 
 USER root
 
